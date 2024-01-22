@@ -1,0 +1,52 @@
+.tile-container {
+  width: 100%;
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  .tile {
+    width: 5vw;
+    height: 5vw;
+    background-color: #000;
+    &:hover {
+      border: 3px solid black;
+    }
+  }
+}
+h1 {
+  background-color: #fff;
+  border: 3px solid black;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  background-color: #fff;
+  border: 3px solid black;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  &:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+  }
+  &:active {
+    transform: scale(.9);
+  }
+}
+.win {
+  animation: blink 200ms linear infinite;
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
