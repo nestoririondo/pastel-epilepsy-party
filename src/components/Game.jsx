@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "../styles/Game.css";
 
 const Game = () => {
-  const [tilesLeft, setTilesLeft] = useState(200);
+  const [tilesLeft, setTilesLeft] = useState(160);
   const [win, setWin] = useState(false);
 
   const handleChangeColor = (e) => {
@@ -48,7 +48,7 @@ const Game = () => {
 
   return (
     <>
-      <div className="tile-container">{renderTiles(200)}</div>
+      <div className="tile-container">{renderTiles(160)}</div>
       {!win && <h1>Tiles left: {tilesLeft}</h1>}
       {win && (
         <>
