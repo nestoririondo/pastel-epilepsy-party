@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "../styles/Game.css";
+import TimeStop from "./TimeStop";
 
 const Game = () => {
   const [tilesLeft, setTilesLeft] = useState(160);
@@ -9,10 +10,10 @@ const Game = () => {
     if (win) return;
     if (e.target.style.border !== "3px solid black") {
       e.target.style.border = "3px solid black";
-      setTilesLeft(tilesLeft - 1);
+      setTilesLeft((tilesLeft) => tilesLeft - 1);
     } else {
       e.target.style.border = "1px solid grey";
-      setTilesLeft(tilesLeft + 1);
+      setTilesLeft((tilesLeft) => tilesLeft + 1);
     }
     e.target.style.backgroundColor = `hsl(${Math.random() * 360}, ${
       Math.random() * 75
@@ -46,16 +47,36 @@ const Game = () => {
     ));
   };
 
+  const playAgain = () => {
+    setWin(false);
+    setTilesLeft(160);
+    const body = document.querySelector("body");
+    body.style.backgroundColor = "white";
+    const tiles = document.querySelectorAll(".tile");
+    tiles.forEach((tile) => {
+      tile.style.backgroundColor = `hsl(${Math.random() * 360}, ${
+        Math.random() * 75
+      }%, ${50 + Math.random() * 25}%)`;
+      tile.style.border = "1px solid grey";
+    });
+  };
+
+  const handleWin = () => {
+    setWin(true);
+  };
+
   return (
     <>
       <div className="tile-container">{renderTiles(160)}</div>
+      {/* <button onClick={handleWin} tilesLeft={tilesLeft}>Win</button> */}
       {!win && <h1>Tiles left: {tilesLeft}</h1>}
       {win && (
         <>
           <h1 className="win">You Win!</h1>
-          <button onClick={() => window.location.reload()}>Play Again</button>
+          <button onClick={playAgain}>Play Again</button>
         </>
       )}
+      <TimeStop win={win} />
     </>
   );
 };

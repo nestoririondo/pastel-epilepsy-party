@@ -31,10 +31,10 @@ h1 {
 button {
   background-color: #fff;
   border: 3px solid black;
-  margin: 0 auto;
   display: flex;
+  padding: 0.25rem 0.5rem;
   justify-content: center;
-  margin-top: 0.5rem;
+  margin: 0.5rem auto;
   &:hover {
     background-color: black;
     color: white;
@@ -46,6 +46,36 @@ button {
 }
 .win {
   animation: blink 200ms linear infinite;
+}
+.timer {
+  background-color: #fff;
+  border: 3px solid black;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  .time,
+  .explanation,
+  .current-time {
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    @media screen and (max-width: 500px) {
+      font-size: 1rem;
+    }
+  }
+  .time {
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+  }
+  .current-time {
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+  }
+  span {
+    font-weight: bold;
+  }
+  .best-time {
+    animation: blink 200ms linear infinite;
+  }
 }
 @keyframes blink {
   0% {
